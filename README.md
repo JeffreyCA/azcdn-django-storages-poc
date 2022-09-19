@@ -1,2 +1,6 @@
 # azcdn-django-storages-poc
-Test app to repro Django Storages Azure Storage + CDN bug
+
+## Getting started
+
+1. `pip install -r requirements.txt`
+2. `py manage.py runserver`
