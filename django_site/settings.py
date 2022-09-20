@@ -24,17 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'mysecret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ '*' ]
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 # Azure Storage config
-AZURE_ACCOUNT_KEY = ''
-AZURE_ACCOUNT_NAME = ''
-AZURE_CONTAINER = ''
-AZURE_CUSTOM_DOMAIN = ''
+AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY', '')
+AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME', '')
+AZURE_CONTAINER = os.getenv('AZURE_CONTAINER', '')
+AZURE_CUSTOM_DOMAIN = os.getenv('AZURE_CUSTOM_DOMAIN', '')
 AZURE_OBJECT_PARAMETERS = { 'content_disposition': 'attachment' }
 
 # Application definition
@@ -127,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
