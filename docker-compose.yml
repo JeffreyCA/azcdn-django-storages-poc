@@ -2,8 +2,11 @@ version: '3.8'
 
 services:
   web:
-    build: .
-    command: gunicorn django_site.wsgi:application --bind 0.0.0.0:8000
+    build:
+      context: .
+      args:
+        - OLD
+    command: gunicorn django_site.wsgi:application --bind 0.0.0.0:8000 --timeout 600 --log-level debug
     volumes:
       - static_volume:/webapp/staticfiles
     ports:

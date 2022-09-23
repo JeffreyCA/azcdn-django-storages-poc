@@ -16,13 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from myapp import views
+from myapp import views, urls
 
 router = routers.DefaultRouter()
 router.register(r'', views.CloudFileViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('myapp/', include('myapp.urls')),
-    # path('admin/', admin.site.urls),
+    path('myapp/', include(urls)),
 ]
